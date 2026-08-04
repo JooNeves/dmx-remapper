@@ -7,6 +7,12 @@
 <meta name="description" content="Remapeamento de canais Art-Net/DMX em tempo real entre consolas de iluminação e visualizadores 3D. Traduz perfis de fixtures sem repatching. App Windows.">
 <meta property="og:title" content="DMX Remapper">
 <meta property="og:description" content="Remapeamento de canais Art-Net/DMX em tempo real. Traduz perfis de fixtures sem repatching.">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#0d1b2a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -364,34 +370,6 @@ code.kbd {
   padding: 2px 7px; border-radius: 4px; border: 1px solid var(--border);
 }
 
-/* PRICING */
-.pricing { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 800px; margin: 0 auto; }
-@media(max-width: 700px){ .pricing { grid-template-columns: 1fr; } }
-.price-card {
-  background: var(--navy-card); border: 1px solid var(--border);
-  border-radius: 18px; padding: 36px 32px; position: relative;
-}
-.price-card.featured { border-color: rgba(159,210,74,0.5); background: linear-gradient(160deg, rgba(159,210,74,0.06), var(--navy-card)); }
-.price-badge {
-  position: absolute; top: -11px; right: 28px;
-  background: var(--lime); color: var(--navy-deep);
-  font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
-  padding: 4px 12px; border-radius: 100px; font-family: 'Geist Mono', monospace;
-}
-.price-card .plan { font-size: 15px; font-weight: 600; color: var(--text-mute); margin-bottom: 14px; }
-.price-card .amount { font-family: 'Instrument Serif', serif; font-size: 56px; line-height: 1; margin-bottom: 4px; }
-.price-card .amount span { font-size: 17px; color: var(--text-faint); font-family: 'Geist', sans-serif; }
-.price-card .note { font-size: 13.5px; color: var(--text-faint); margin-bottom: 26px; }
-.price-list { list-style: none; margin-bottom: 30px; }
-.price-list li { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; font-size: 14.5px; color: var(--text); border-top: 1px solid rgba(31,52,74,0.5); }
-.price-list li:first-child { border-top: none; }
-.price-list li svg { width: 17px; height: 17px; stroke: var(--lime); flex-shrink: 0; margin-top: 3px; }
-.price-btn { display: block; text-align: center; padding: 14px; border-radius: 10px; font-weight: 600; text-decoration: none; font-size: 15px; transition: all .2s; }
-.price-btn.solid { background: var(--lime); color: var(--navy-deep); }
-.price-btn.solid:hover { box-shadow: 0 8px 28px rgba(159,210,74,0.35); transform: translateY(-1px); }
-.price-btn.outline { border: 1px solid var(--border); color: var(--text); }
-.price-btn.outline:hover { border-color: var(--lime); }
-
 /* reveal */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.in { opacity: 1; transform: none; }
@@ -410,7 +388,6 @@ code.kbd {
       <a href="#imagens" data-i="n2">Imagens</a>
       <a href="#how" data-i="n3">Como funciona</a>
       <a href="#docs" data-i="n4">Documentação</a>
-      <a href="#pricing" data-i="n5">Preços</a>
       <div class="lang-dd">
         <button class="lang-btn" id="langBtn" type="button">
           <svg class="globe" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z"/></svg>
@@ -425,7 +402,7 @@ code.kbd {
           <button data-lang="ja"><span class="cc">JA</span>日本語</button>
         </div>
       </div>
-      <a href="https://github.com/JooNeves/dmx-remapper/releases/download/v94/DMXRemapper_v94.exe" class="nav-cta">Download</a>
+      <a href="https://github.com/JooNeves/dmx-remapper/releases/latest/download/DMXRemapper.exe" class="nav-cta">Download</a>
     </div>
   </div>
 </nav>
@@ -435,7 +412,7 @@ code.kbd {
     <h1>DMX <em>Remapper</em></h1>
     <p class="subtitle" data-i="sub">Routing de canais DMX por Art-Net.</p>
     <div class="hero-btns">
-      <a href="https://github.com/JooNeves/dmx-remapper/releases/download/v94/DMXRemapper_v94.exe" class="btn-primary" data-i="b1">Descarregar grátis</a>
+      <a href="https://github.com/JooNeves/dmx-remapper/releases/latest/download/DMXRemapper.exe" class="btn-primary" data-i="b1">Descarregar grátis</a>
       <a href="#how" class="btn-ghost" data-i="b2">Ver como funciona</a>
     </div>
     <p class="hero-meta" data-i="meta">Versão gratuita · Sem registo</p>
@@ -630,37 +607,6 @@ code.kbd {
   </div>
 </section>
 
-<section id="pricing">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="section-tag" data-i="prt">Preços</div>
-      <h2 data-i="prh">Começa grátis. Cresce quando precisares.</h2>
-      <p data-i="prp">Sem subscrições. Uma licença, paga uma vez.</p>
-    </div>
-    <div class="pricing">
-      <div class="price-card reveal">
-        <div class="plan" data-i="pl1">Gratuito</div>
-        <div class="amount">0€</div>
-        <div class="note" data-i="pn1">Para sempre · sem registo</div>
-        <ul class="price-list" data-i="pu1">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M5 12l5 5 9-11" stroke-linecap="round" stroke-linejoin="round"/></svg>1 routing</li><li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M5 12l5 5 9-11" stroke-linecap="round" stroke-linejoin="round"/></svg>Até 4 fixtures</li><li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M5 12l5 5 9-11" stroke-linecap="round" stroke-linejoin="round"/></svg>10 canais por routing</li><li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M5 12l5 5 9-11" stroke-linecap="round" stroke-linejoin="round"/></svg>Monitor e Log completos</li>
-        </ul>
-        <a href="https://github.com/JooNeves/dmx-remapper/releases/download/v94/DMXRemapper_v94.exe" class="price-btn outline" data-i="pb1">Descarregar</a>
-      </div>
-      <div class="price-card featured reveal">
-        <div class="price-badge">Pro</div>
-        <div class="plan" data-i="pl2">Licença completa</div>
-        <div class="amount" data-i="pa2">39€ <span>/ pagamento único</span></div>
-        <div class="note" data-i="pn2">Sem limites · até 2 máquinas · vitalícia</div>
-        <ul class="price-list" data-i="pu2">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M5 12l5 5 9-11" stroke-linecap="round" stroke-linejoin="round"/></svg>Routings ilimitados</li><li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M5 12l5 5 9-11" stroke-linecap="round" stroke-linejoin="round"/></svg>Fixtures ilimitadas</li><li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M5 12l5 5 9-11" stroke-linecap="round" stroke-linejoin="round"/></svg>Canais ilimitados</li><li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M5 12l5 5 9-11" stroke-linecap="round" stroke-linejoin="round"/></svg>2 ativações de máquina</li><li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M5 12l5 5 9-11" stroke-linecap="round" stroke-linejoin="round"/></svg>Funciona offline até 7 dias</li>
-        </ul>
-        <a href="https://www.creem.io/payment/prod_50SQJcIQLRztv9mMnOGvyn" class="price-btn solid" data-i="pb2">Comprar licença</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 
 <footer>
@@ -671,7 +617,6 @@ code.kbd {
     </div>
     <div class="foot-links">
       <a href="#docs" data-i="fl2">Documentação</a>
-      <a href="#pricing" data-i="fl3">Preços</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
     </div>
@@ -715,7 +660,4 @@ function setLang(l) {
 document.querySelectorAll('#langMenu button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
 try { const s = localStorage.getItem('siteLang') || 'en'; if (s !== 'pt') setLang(s); } catch (_) { setLang('en'); }
 </script>
-<script data-goatcounter="https://dmxremapper.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-</body>
-</html>
+<script data-goatcounter="https://dmxrem
