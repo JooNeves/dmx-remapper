@@ -413,7 +413,7 @@ code.kbd {
           <button data-lang="ja"><span class="cc">JA</span>日本語</button>
         </div>
       </div>
-      <a href="https://github.com/JooNeves/dmx-remapper/releases/latest/download/DMXRemapper_v95.exe" class="nav-cta">Download</a>
+      <a href="https://github.com/JooNeves/dmx-remapper/releases/latest/download/DMXRemapper_v96.exe" class="nav-cta">Download</a>
     </div>
   </div>
 </nav>
@@ -423,7 +423,7 @@ code.kbd {
     <h1>DMX <em>Remapper</em></h1>
     <p class="subtitle" data-i="sub">Routing de canais DMX por Art-Net.</p>
     <div class="hero-btns">
-      <a href="https://github.com/JooNeves/dmx-remapper/releases/latest/download/DMXRemapper_v95.exe" class="btn-primary" data-i="b1">Descarregar grátis</a>
+      <a href="https://github.com/JooNeves/dmx-remapper/releases/latest/download/DMXRemapper_v96.exe" class="btn-primary" data-i="b1">Descarregar grátis</a>
       <a href="#how" class="btn-ghost" data-i="b2">Ver como funciona</a>
     </div>
     <figure class="hero-shot reveal in">
@@ -644,18 +644,25 @@ code.kbd {
 
       <div class="doc-group reveal" data-i="g2">
         <h3>Configuração de rede</h3>
-        <p>O Art-Net é um protocolo de rede (UDP, porta <code class="kbd">6454</code>). O proxy precisa de um IP para escutar (entrada) e de um IP para enviar (saída). Numa só máquina tens duas opções.</p>
-        <h4>Opção A — Loopback (um só PC)</h4>
-        <p>Adiciona um Microsoft Loopback Adapter com o IP <code class="kbd">2.0.0.1</code>. Configura a mesa para enviar Art-Net para esse IP. O remapper escuta em <code class="kbd">2.0.0.1</code> e envia para <code class="kbd">2.0.0.2</code>. O visualizador escuta em <code class="kbd">2.0.0.2</code>.</p>
+        <p>O Art-Net é um protocolo de rede (UDP, porta <code class="kbd">6454</code>). O proxy precisa de um IP para escutar (entrada) e de um IP para enviar (saída).</p>
+        <h4>Opção A — Rede física (2 PCs)</h4>
+        <p>Consola, DMX Remapper e visualizador (ou nó Art-Net) correm em 2 máquinas distintas, ligadas por uma rede real (switch/router).</p>
+        <p>Exemplo de configuração:</p>
+        <ul>
+          <li><b>PC 1:</b> <code class="kbd">2.0.0.10</code> — consola (mesa de luz)</li>
+          <li><b>PC 2:</b> <code class="kbd">2.0.0.20</code> — DMX Remapper (Input) e <code class="kbd">2.0.0.30</code> — visualizador/nó Art-Net (Output), ambos na mesma placa de rede física: o primeiro IP definido diretamente nas propriedades da placa, o segundo adicionado a seguir em <b>Avançadas</b>.</li>
+        </ul>
+        <p>Configura sempre a consola para enviar por unicast diretamente ao IP do DMX Remapper, nunca por broadcast — evita que o visualizador receba os dados duas vezes quando está na mesma sub-rede.</p>
+        <h4>Opção B — Loopback (mesmo PC)</h4>
+        <p>Adiciona um Microsoft Loopback Adapter e define o primeiro IP diretamente para <code class="kbd">2.0.0.1</code> nas propriedades IPv4 da placa. Configura a consola para enviar Art-Net para esse IP. Adiciona um 2.º IP <code class="kbd">2.0.0.2</code> na mesma placa através de <b>Avançadas</b> — o remapper escuta em <code class="kbd">2.0.0.1</code> e envia para <code class="kbd">2.0.0.2</code>, e o visualizador escuta em <code class="kbd">2.0.0.2</code>.</p>
         <p>Como adicionar um Microsoft Loopback Adapter no Windows:</p>
         <ul>
           <li>Botão direito em <b>Start</b> → <b>Device Manager</b> → <b>Network adapters</b>.</li>
           <li>Menu <b>Action</b> → <b>Add legacy hardware</b> → Next.</li>
           <li><b>Install the hardware that I manually select</b> → <b>Network adapters</b> → <b>Microsoft</b> → <b>Microsoft KM-TEST Loopback Adapter</b>.</li>
-          <li>Depois de instalar, abre <b>Network Connections</b>, encontra o novo adaptador e define o IPv4 estático <code class="kbd">2.0.0.1</code> / <code class="kbd">255.0.0.0</code>. Adiciona um 2.º IP <code class="kbd">2.0.0.2</code> no mesmo adaptador (<b>Advanced</b> → <b>IP Settings</b> → <b>Add</b>).</li>
+          <li>Depois de instalar, abre <b>Network Connections</b>, encontra o novo adaptador e define o IPv4 estático <code class="kbd">2.0.0.1</code> / <code class="kbd">255.0.0.0</code> diretamente. Adiciona o 2.º IP <code class="kbd">2.0.0.2</code> no mesmo adaptador através de <b>Advanced</b> → <b>IP Settings</b> → <b>Add</b>.</li>
         </ul>
-        <h4>Opção B — Rede física (vários PCs)</h4>
-        <p>Mesa → PC remapper → visualizador / nó Art-Net, cada um na sua máquina. É a topologia padrão de produção.</p>
+        <div class="doc-note"><b>Consola também neste PC (ex: grandMA2 onPC)</b>Se o teu software de consola também correr neste PC e usar a placa Loopback, 2 IPs não bastam — precisas de 3 IPs distintos na mesma placa: um para a consola (definido diretamente), um para o DMX Remapper/Input e um para o visualizador/Output (ambos adicionados a seguir via Avançadas). Exemplo: <code class="kbd">2.0.0.1</code> consola, <code class="kbd">2.0.0.2</code> DMX Remapper, <code class="kbd">2.0.0.3</code> visualizador. Nunca reutilizes o IP da consola como Input do DMX Remapper.</div>
       </div>
 
       <div class="doc-group reveal" data-i="g3">
@@ -709,11 +716,23 @@ code.kbd {
 
       <div class="doc-group reveal" data-i="g5">
         <h3>Resolução de problemas</h3>
+        <h4>Geral</h4>
         <ul>
           <li><b>Sem dados no Monitor:</b> confirma que a mesa envia para o IP correto e que a Firewall do Windows permite UDP de entrada na porta <code class="kbd">6454</code>.</li>
           <li><b>Visualizador sem movimento:</b> confirma que o visualizador escuta no OUT Universe configurado no Patch e que o Output IP é alcançável.</li>
           <li><b>Erro de mesmo universo:</b> IN e OUT não podem partilhar universo — muda o OUT para um universo diferente.</li>
           <li><b>Pacotes perdidos no Log:</b> erros elevados costumam indicar IP mal configurado ou outro processo a ocupar a porta <code class="kbd">6454</code>.</li>
+        </ul>
+        <h4>Rede física (2 PCs)</h4>
+        <ul>
+          <li><b>Nada chega:</b> confirma que ambas as máquinas estão na mesma sub-rede (máscara igual) e conseguem fazer ping entre si; confirma a Firewall no PC do DMX Remapper e do visualizador.</li>
+          <li><b>Funciona por Wi-Fi mas com fliques ou quebras:</b> muda para ligação Ethernet por cabo — a latência/jitter do Wi-Fi não é bem tolerado pelo DMX.</li>
+          <li><b>Consola chega ao remapper mas o visualizador não mostra nada:</b> confirma que o Output IP corresponde ao IP real da máquina do visualizador e que o OUT Universe do Patch bate certo com o que o visualizador escuta.</li>
+        </ul>
+        <h4>Loopback (mesmo PC)</h4>
+        <ul>
+          <li><b>Fliques no visualizador com broadcast:</b> normal quando a origem e o destino final estão na mesma sub-rede — o destino recebe os dados duas vezes. Muda a consola para unicast direto ao IP do DMX Remapper.</li>
+          <li><b>Nada chega em unicast (mas broadcast funciona):</b> confirma que o IP configurado como Input do DMX Remapper é DIFERENTE do IP que a consola usa como identidade própria — reutilizar o mesmo IP faz a consola tentar enviar "para si própria", o que falha nesta placa virtual.</li>
         </ul>
       </div>
 
